@@ -1,0 +1,18 @@
+{
+  "pages": [
+    "pages/home/main",
+    "pages/loc/main"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "您的位置信息将用于获取当前位置的天气"
+    }
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#06307b",
+    "navigationBarTitleText": "iWeather",
+    "navigationBarTextStyle": "white"
+  },
+  "cloud": true
+}

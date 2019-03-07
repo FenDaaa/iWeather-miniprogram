@@ -13,17 +13,35 @@ var getCurrentLocation = (params) => {
 }
 
 var wxRequest = (url, sdata) => {
+  wx.showLoading({
+    title: '加载中'
+  })
   return new Promise((resolve, reject) => {
     wx.request({
       url: url,
       data: sdata,
       success: (res) => {
+        wx.hideLoading()
         resolve(res)
       },
       fail: function (error) {
+        wx.hideLoading()
         reject(error)
       }
     })
   })
 }
-export {getCurrentLocation, wxRequest}
+
+var getCurrentSetting = (params) => {
+  return new Promise((resolve, reject) => {
+    wx.getSetting({
+      success: (res) => {
+        resolve(res)
+      },
+      faild: (error) => {
+        reject(error)
+      }
+    })
+  })
+}
+export {getCurrentLocation, wxRequest, getCurrentSetting}

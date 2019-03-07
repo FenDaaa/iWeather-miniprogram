@@ -99,6 +99,9 @@ export default {
       this.locator = wxrCoordinate.data.result
     },
     async fetchData () {
+      wx.showLoading({
+        title: '加载中'
+      })
       let that = this
       this.searchResults = that.searchResults
       wx.cloud.init()
@@ -111,10 +114,15 @@ export default {
       }).get({
         success: res => {
           if (this.searchInputModel === '') {
+            wx.hideLoading()
             that.searchResults = []
           } else {
+            wx.hideLoading()
             that.searchResults = res.data
           }
+        },
+        fail: resf => {
+          wx.hideLoading()
         }
       })
       if (this.searchInputModel === '') {
